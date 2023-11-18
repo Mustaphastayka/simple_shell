@@ -1,8 +1,9 @@
 #include "shell.h"
+
 /**
  * hsh - main shell loop
  * @info: the parameter & return info struct
- * @arv: the argument vector from main()
+ * @arv: the strargument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
@@ -10,6 +11,7 @@ int hsh(t__info *info, char **arv)
 {
 	ssize_t r = 0;
 	int Bui_re = 0;
+
 	while (r != -1 && Bui_re != -2)
 	{
 		InfoClearer(info);
@@ -40,6 +42,7 @@ int hsh(t__info *info, char **arv)
 	}
 	return (Bui_re);
 }
+
 /**
  * StrBuilFound - finds a builtin command
  * @info: the parameter & return info struct
@@ -53,15 +56,17 @@ int StrBuilFound(t__info *info)
 {
 	int i, Bui_in_re = -1;
 	builtin_table Buiintable[] = {
-			{"exit", ShellExit},
-			{"env", CorrentEnv},
-			{"help", ChangeHelp},
-			{"Histor", LsHistori},
-			{"setenv", EnvNewVar},
-			{"unsetenv", EnvVarRemove},
-			{"cd", ChangeDir},
-			{"Alias", AliasMan},
-			{NULL, NULL}};
+		{"exit", ShellExit},
+		{"env", CorrentEnv},
+		{"help", ChangeHelp},
+		{"Histor", LsHistori},
+		{"setenv", EnvNewVar},
+		{"unsetenv", EnvVarRemove},
+		{"cd", ChangeDir},
+		{"alias", AliasMan},
+		{NULL, NULL}
+	};
+
 	for (i = 0; Buiintable[i].type; i++)
 		if (ComparStr(info->ArrArg[0], Buiintable[i].type) == 0)
 		{
@@ -71,6 +76,7 @@ int StrBuilFound(t__info *info)
 		}
 	return (Bui_in_re);
 }
+
 /**
  * CmdFound - finds a command in PATH
  * @info: the parameter & return info struct
@@ -79,9 +85,10 @@ int StrBuilFound(t__info *info)
  */
 void CmdFound(t__info *info)
 {
-	char *SPath = NULL;
+	char *SPath  = NULL;
 	int i, k;
-	info->SPath = info->ArrArg[0];
+
+	info->SPath  = info->ArrArg[0];
 	if (info->countlifeflags == 1)
 	{
 		info->countofline++;
@@ -92,7 +99,8 @@ void CmdFound(t__info *info)
 			k++;
 	if (!k)
 		return;
-	SPath = PathCmdFind(info, EnvironGet(info, "SPath="), info->ArrArg[0]);
+
+	SPath = PathCmdFind(info, EnvironGet(info, "PATH="), info->ArrArg[0]);
 	if (SPath)
 	{
 		info->SPath = SPath;
@@ -100,7 +108,8 @@ void CmdFound(t__info *info)
 	}
 	else
 	{
-		if ((ModeIntera(info) || EnvironGet(info, "SPath=") || info->ArrArg[0][0] == '/') && Comm_IS(info, info->ArrArg[0]))
+		if ((ModeIntera(info) || EnvironGet(info, "PATH=")
+			|| info->ArrArg[0][0] == '/') && Comm_IS(info, info->ArrArg[0]))
 			CmdFork(info);
 		else if (*(info->strarg) != '\n')
 		{
@@ -109,6 +118,7 @@ void CmdFound(t__info *info)
 		}
 	}
 }
+
 /**
  * CmdFork - forks a an exec thread to run cmd
  * @info: the parameter & return info struct
@@ -118,23 +128,25 @@ void CmdFound(t__info *info)
 void CmdFork(t__info *info)
 {
 	pid_t child_pid;
+
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->SPath, info->ArrArg, StrArrayEnv(info)) == -1)
+		if (execve(info->SPath, info->ArrArg
+		, StrArrayEnv(info)) == -1)
 		{
 			InfoStructFree(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}
-
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

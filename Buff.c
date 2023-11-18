@@ -36,35 +36,35 @@ int Chains(t__info *info, char *buffer, size_t *addpbu)
 /**
  * ChainCheck - checks we should continue chaining based on last status
  * @info: the parameter struct
- * @buffer: the char buffer
- * @addpbu: address of current position in buf
+ * @buffr: the char buffer
+ * @pbu: address of current position in buf
  * @i: starting position in buf
- * @buflen: length of buf
+ * @blen: length of buf
  *
  * Return: Void
  */
-void ChainCheck(t__info *info, char *buffer, size_t *addpbu, size_t i, size_t buflen)
+void ChainCheck(t__info *info, char *buffr, size_t *pbu, size_t i, size_t blen)
 {
-	size_t j = *addpbu;
+	size_t j = *pbu;
 
 	if (info->BufCmdType == CMD_AND)
 	{
 		if (info->statuus_)
 		{
-			buffer[i] = 0;
-			j = buflen;
+			buffr[i] = 0;
+			j = blen;
 		}
 	}
 	if (info->BufCmdType == CMD_OR)
 	{
 		if (!info->statuus_)
 		{
-			buffer[i] = 0;
-			j = buflen;
+			buffr[i] = 0;
+			j = blen;
 		}
 	}
 
-	*addpbu = j;
+	*pbu = j;
 }
 /**
  * AliasReplac - replaces an aliases in the tokenized string
