@@ -1,5 +1,12 @@
 #include "shell.h"
-
+/**
+ * StartAddNote - adds a node to the start of the list
+ * @header: address of pointer to head node
+ * @str: str field of node
+ * @number: node index used by history
+ *
+ * Return: size of list
+ */
 t__liste *StartAddNote(t__liste **header, const char *str, int number)
 {
 	t__liste *new_header;
@@ -24,7 +31,14 @@ t__liste *StartAddNote(t__liste **header, const char *str, int number)
 	*header = new_header;
 	return (new_header);
 }
-
+/**
+ * EndAddNote - adds a node to the end of the list
+ * @header: address of pointer to head node
+ * @str: str field of node
+ * @number: node index used by history
+ *
+ * Return: size of list
+ */
 t__liste *EndAddNote(t__liste **header, const char *str, int number)
 {
 	t__liste *new_node, *node;
@@ -57,7 +71,12 @@ t__liste *EndAddNote(t__liste **header, const char *str, int number)
 		*header = new_node;
 	return (new_node);
 }
-
+/**
+ * StringListPrintOnly - prints only the str element of a list_t linked list
+ * @pnfn: pointer to first node
+ *
+ * Return: size of list
+ */
 size_t StringListPrintOnly(const t__liste *pnfn)
 {
 	size_t i = 0;
@@ -71,7 +90,13 @@ size_t StringListPrintOnly(const t__liste *pnfn)
 	}
 	return (i);
 }
-
+/**
+ * NodeIndexDeleted - deletes node at given index
+ * @header: address of pointer to first node
+ * @index: index of node to delete
+ *
+ * Return: 1 on success, 0 on failure
+ */
 int NodeIndexDeleted(t__liste **header, unsigned int index)
 {
 	t__liste *node, *prev_node;
@@ -104,7 +129,12 @@ int NodeIndexDeleted(t__liste **header, unsigned int index)
 	}
 	return (0);
 }
-
+/**
+ * FreesLists - frees all nodes of a list
+ * @header_ptr: address of pointer to head node
+ *
+ * Return: void
+ */
 void FreesLists(t__liste **header_ptr)
 {
 	t__liste *node, *next_node, *head;

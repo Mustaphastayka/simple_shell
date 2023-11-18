@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ **MemoFileC - fills memory with a constant byte
+ *@pn: the pointer to the memory area
+ *@by: the byte to fill *s with
+ *@byf: the amount of bytes to be filled
+ *Return: (s) a pointer to the memory area s
+ */
 char *MemoFileC(char *pn, char by, unsigned int byf)
 {
 	unsigned int i;
@@ -8,7 +14,10 @@ char *MemoFileC(char *pn, char by, unsigned int byf)
 		pn[i] = by;
 	return (pn);
 }
-
+/**
+ * StrFFree - frees a string of strings
+ * @sos: string of strings
+ */
 void StrFFree(char **sos)
 {
 	char **a = sos;
@@ -19,7 +28,14 @@ void StrFFree(char **sos)
 		free(*sos++);
 	free(a);
 }
-
+/**
+ * RealloBlMem - reallocates a block of memory
+ * @ptrmb: pointer to previous malloc'ated block
+ * @o_size: byte size of previous block
+ * @n_size: byte size of new block
+ *
+ * Return: pointer to da ol'block nameen.
+ */
 void *RealloBlMem(void *ptrmb, unsigned int o_size, unsigned int n_size)
 {
 	char *p;

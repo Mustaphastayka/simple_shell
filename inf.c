@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+ * InfoClearer - initializes info_t struct
+ * @info: struct address
+ */
 void InfoClearer(t__info *info)
 {
 	info->strarg = NULL;
@@ -7,7 +10,11 @@ void InfoClearer(t__info *info)
 	info->SPath = NULL;
 	info->CountArg = 0;
 }
-
+/**
+ * InfoStructIn - initializes info_t struct
+ * @info: struct address
+ * @arv: argument vector
+ */
 void InfoStructIn(t__info *info, char **arv)
 {
 	int i = 0;
@@ -34,7 +41,11 @@ void InfoStructIn(t__info *info, char **arv)
 		VarsReplac(info);
 	}
 }
-
+/**
+ * InfoStructFree - frees info_t struct fields
+ * @info: struct address
+ * @allfi: true if freeing all fields
+ */
 void InfoStructFree(t__info *info, int allfi)
 {
 	StrFFree(info->ArrArg);

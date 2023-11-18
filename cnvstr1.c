@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+ * StrToIn2 - converts a string to an integer
+ * @str: the string to be converted
+ * Return: 0 if no numbers in string, converted number otherwise
+ *       -1 on error
+ */
 int StrToIn2(char *str)
 {
 	int i = 0;
@@ -21,7 +26,13 @@ int StrToIn2(char *str)
 	}
 	return (result);
 }
-
+/**
+ * ErrorMessPrint - prints an error message
+ * @info: the parameter & return info struct
+ * @errorstr: string containing specified error type
+ * Return: 0 if no numbers in string, converted number otherwise
+ *        -1 on error
+ */
 void ErrorMessPrint(t__info *info, char *errorstr)
 {
 	StrPut(info->NameFile);
@@ -32,7 +43,13 @@ void ErrorMessPrint(t__info *info, char *errorstr)
 	StrPut(": ");
 	StrPut(errorstr);
 }
-
+/**
+ * DecNumPrint - function prints a decimal (integer) number (base 10)
+ * @input: the input
+ * @filedes: the filedescriptor to write to
+ *
+ * Return: number of characters printed
+ */
 int DecNumPrint(int input, int filedes)
 {
 	int (*_WrCharPutC)(char) = WrCharPutC;
@@ -64,7 +81,14 @@ int DecNumPrint(int input, int filedes)
 
 	return (count);
 }
-
+/**
+ * NumberConver - converter function, a clone of itoa
+ * @number: number
+ * @basee: base
+ * @flag: flags
+ *
+ * Return: string
+ */
 char *NumberConver(long int number, int basee, int flag)
 {
 	static char *array;
@@ -91,7 +115,12 @@ char *NumberConver(long int number, int basee, int flag)
 		*--ptr = sign;
 	return (ptr);
 }
-
+/**
+ * CommRemover - function replaces first instance of '#' with '\0'
+ * @buf: address of the string to modify
+ *
+ * Return: Always 0;
+ */
 void CommRemover(char *buf)
 {
 	int i;

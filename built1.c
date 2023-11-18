@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * ShellExit - exits the shell
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: exits with a given exit status
+ *         (0) if info.argv[0] != "exit"
+ */
 int ShellExit(t__info *info)
 {
 	int checkext;
@@ -21,7 +27,12 @@ int ShellExit(t__info *info)
 	info->number_error = -1;
 	return (-2);
 }
-
+/**
+ * ChangeDir - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
+ */
 int ChangeDir(t__info *info)
 {
 	char *s, *dek, buffer[1024];
@@ -65,7 +76,12 @@ int ChangeDir(t__info *info)
 	}
 	return (0);
 }
-
+/**
+ * ChangeHelp - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
+ */
 int ChangeHelp(t__info *info)
 {
 	char **_array;
@@ -76,4 +92,3 @@ int ChangeHelp(t__info *info)
 		InpStrPrint(*_array);
 	return (0);
 }
-

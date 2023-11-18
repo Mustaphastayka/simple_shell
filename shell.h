@@ -32,7 +32,12 @@
 
 extern char **environ;
 
-
+/**
+ * struct stringlit - singly linked list
+ * @number: the number field
+ * @str: a string
+ * @next_node: points to the next node
+ */
 
 typedef struct stringlit
 {
@@ -41,6 +46,28 @@ typedef struct stringlit
 	struct stringlit *next_node;
 } t__liste;
 
+/**
+ *struct InfoPass - contains pseudo-arguements to pass into a function,
+ *					allowing uniform prototype for function pointer struct
+ *@strarg: a string generated from getline containing arguements
+ *@ArrArg: an array of strings generated from arg
+ *@SPath: a string path for the current command
+ *@CountArg: the argument count
+ *@countofline: the error count
+ *@number_error: the error code for exit()s
+ *@countlifeflags: if on count this line of input
+ *@NameFile: the program filename
+ *@EnvirList: linked list local copy of environ
+ *@environ: custom modified copy of environ from LL env
+ *@Histor: the history node
+ *@Alias: the alias node
+ *@ChangedEnvir: on if environ was changed
+ *@statuus_: the return status of the last exec'd command
+ *@cmd_buf: address of pointer to cmd_buf, on if chaining
+ *@BufCmdType: CMD_type ||, &&, ;
+ *@FdReadinp: the fd from which to read line input
+ *@counthists: the history line number count
+ */
 
 typedef struct InfoPass
 {
@@ -71,6 +98,11 @@ typedef struct InfoPass
 				0, 0, 0                                                             \
 	}
 
+/**
+ *struct builtin - contains a builtin string and related function
+ *@type: the builtin command flag
+ *@func: the function
+ */
 typedef struct builtin
 {
 	char *type;

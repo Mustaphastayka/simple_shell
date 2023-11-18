@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+ * FileHistory - gets the history file
+ * @info: parameter struct
+ *
+ * Return: allocated string containg history file
+ */
 char *FileHistory(t__info *info)
 {
 	char *buffer, *dek;
@@ -16,7 +21,12 @@ char *FileHistory(t__info *info)
 	StringConc(buffer, HIST_FILE);
 	return (buffer);
 }
-
+/**
+ * TipeHistory - creates a file, or appends to an existing file
+ * @info: the parameter struct
+ *
+ * Return: 1 on success, else -1
+ */
 int TipeHistory(t__info *info)
 {
 	ssize_t fd;
@@ -39,7 +49,12 @@ int TipeHistory(t__info *info)
 	close(fd);
 	return (1);
 }
-
+/**
+ * HistoryRead - reads history from file
+ * @info: the parameter struct
+ *
+ * Return: histcount on success, 0 otherwise
+ */
 int HistoryRead(t__info *info)
 {
 	int i, last = 0, linecount = 0;
@@ -82,7 +97,14 @@ int HistoryRead(t__info *info)
 	HistoryRenumbr(info);
 	return (info->counthists);
 }
-
+/**
+ * HistoryListBuild - adds entry to a history linked list
+ * @info: Structure containing potential arguments. Used to maintain
+ * @buffer: buffer
+ * @linecount: the history linecount, histcount
+ *
+ * Return: Always 0
+ */
 int HistoryListBuild(t__info *info, char *buffer, int linecount)
 {
 	t__liste *node = NULL;
@@ -95,7 +117,12 @@ int HistoryListBuild(t__info *info, char *buffer, int linecount)
 		info->Histor = node;
 	return (0);
 }
-
+/**
+ * HistoryRenumbr - renumbers the history linked list after changes
+ * @info: Structure containing potential arguments. Used to maintain
+ *
+ * Return: the new histcount
+ */
 int HistoryRenumbr(t__info *info)
 {
 	t__liste *node = info->Histor;
@@ -108,4 +135,3 @@ int HistoryRenumbr(t__info *info)
 	}
 	return (info->counthists = i);
 }
-

@@ -1,5 +1,12 @@
 #include "shell.h"
-
+/**
+ * input_buf - buffers chained commands
+ * @info: parameter struct
+ * @buffer: address of buffer
+ * @lenvar: address of len var
+ *
+ * Return: bytes read
+ */
 ssize_t input_buf(t__info *info, char **buffer, size_t *lenvar)
 {
 	ssize_t r = 0;
@@ -33,6 +40,12 @@ ssize_t input_buf(t__info *info, char **buffer, size_t *lenvar)
 	}
 	return (r);
 }
+/**
+ * LineInputGet - gets a line minus the newline
+ * @info: parameter struct
+ *
+ * Return: bytes read
+ */
 ssize_t LineInputGet(t__info *info)
 {
 	static char *buffer;
@@ -71,6 +84,14 @@ ssize_t LineInputGet(t__info *info)
 	*buf_p = buffer;
 	return (r);
 }
+/**
+ * read_buf - reads a buffer
+ * @info: parameter struct
+ * @buffer: buffer
+ * @i: size
+ *
+ * Return: r
+ */
 ssize_t read_buf(t__info *info, char *buffer, size_t *i)
 {
 	ssize_t r = 0;
@@ -82,6 +103,14 @@ ssize_t read_buf(t__info *info, char *buffer, size_t *i)
 		*i = r;
 	return (r);
 }
+/**
+ * LineGet - gets the next line of input from STDIN
+ * @info: parameter struct
+ * @ptbfr: address of pointer to buffer, preallocated or NULL
+ * @lengptr: size of preallocated ptr buffer if not NULL
+ *
+ * Return: s
+ */
 int LineGet(t__info *info, char **ptbfr, size_t *lengptr)
 {
 	static char buffer[READ_BUF_SIZE];
@@ -120,10 +149,15 @@ int LineGet(t__info *info, char **ptbfr, size_t *lengptr)
 	*ptbfr = p;
 	return (s);
 }
+/**
+ * CtrCBlock - blocks ctrl-C
+ * @number_sign: the signal number
+ *
+ * Return: void
+ */
 void CtrCBlock(__attribute__((unused)) int number_sign)
 {
 	InpStrPrint("\n");
 	InpStrPrint("$ ");
 	WrCharPutC(BUF_FLUSH);
 }
-

@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * hsh - main shell loop
+ * @info: the parameter & return info struct
+ * @arv: the argument vector from main()
+ *
+ * Return: 0 on success, 1 on error, or error code
+ */
 int hsh(t__info *info, char **arv)
 {
 	ssize_t r = 0;
@@ -34,7 +40,15 @@ int hsh(t__info *info, char **arv)
 	}
 	return (Bui_re);
 }
-
+/**
+ * StrBuilFound - finds a builtin command
+ * @info: the parameter & return info struct
+ *
+ * Return: -1 if builtin not found,
+ *			0 if builtin executed successfully,
+ *			1 if builtin found but not successful,
+ *			-2 if builtin signals exit()
+ */
 int StrBuilFound(t__info *info)
 {
 	int i, Bui_in_re = -1;
@@ -57,7 +71,12 @@ int StrBuilFound(t__info *info)
 		}
 	return (Bui_in_re);
 }
-
+/**
+ * CmdFound - finds a command in PATH
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 void CmdFound(t__info *info)
 {
 	char *SPath = NULL;
@@ -90,7 +109,12 @@ void CmdFound(t__info *info)
 		}
 	}
 }
-
+/**
+ * CmdFork - forks a an exec thread to run cmd
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 void CmdFork(t__info *info)
 {
 	pid_t child_pid;
@@ -123,4 +147,3 @@ void CmdFork(t__info *info)
 		}
 	}
 }
-

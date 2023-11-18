@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * main - entry point
+ * @arc: arg count
+ * @arv: arg vector
+ *
+ * Return: 0 on success, 1 on error
+ */
 int main(int arc, char **arv)
 {
 	t__info info[] = {INFO_INIT};

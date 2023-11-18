@@ -1,11 +1,22 @@
 #include "shell.h"
-
+/**
+ * CorrentEnv - prints the current environment
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ * Return: Always 0
+ */
 int CorrentEnv(t__info *info)
 {
 	StringListPrintOnly(info->EnvirList);
 	return (0);
 }
-
+/**
+ * EnvironGet - gets the value of an environ variable
+ * @info: Structure containing potential arguments. Used to maintain
+ * @varname: env var name
+ *
+ * Return: the value
+ */
 char *EnvironGet(t__info *info, const char *varname)
 {
 	t__liste *node = info->EnvirList;
@@ -20,7 +31,13 @@ char *EnvironGet(t__info *info, const char *varname)
 	}
 	return (NULL);
 }
-
+/**
+ * EnvNewVar - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
+ */
 int EnvNewVar(t__info *info)
 {
 	if (info->CountArg != 3)
@@ -32,7 +49,12 @@ int EnvNewVar(t__info *info)
 		return (0);
 	return (1);
 }
-
+/**
+ * EnvVarRemove - Remove an environment variable
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
+ */
 int EnvVarRemove(t__info *info)
 {
 	int i;
@@ -47,7 +69,12 @@ int EnvVarRemove(t__info *info)
 
 	return (0);
 }
-
+/**
+ * EnvLinkedList - populates env linked list
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ * Return: Always 0
+ */
 int EnvLinkedList(t__info *info)
 {
 	t__liste *node = NULL;

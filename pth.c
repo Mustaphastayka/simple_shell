@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * Comm_IS - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
+ *
+ * Return: 1 if true, 0 otherwise
+ */
 int Comm_IS(t__info *info, char *path)
 {
 	struct stat st;
@@ -14,7 +20,14 @@ int Comm_IS(t__info *info, char *path)
 	}
 	return (0);
 }
-
+/**
+ * CharsDup - duplicates characters
+ * @pathstring: the PATH string
+ * @startind: starting index
+ * @stopind: stopping index
+ *
+ * Return: pointer to new buffer
+ */
 char *CharsDup(char *pathstring, int startind, int stopind)
 {
 	static char buf[1024];
@@ -26,7 +39,14 @@ char *CharsDup(char *pathstring, int startind, int stopind)
 	buf[k] = 0;
 	return (buf);
 }
-
+/**
+ * PathCmdFind - finds this cmd in the PATH string
+ * @info: the info struct
+ * @pathstring: the PATH string
+ * @command: the cmd to find
+ *
+ * Return: full path of cmd if found or NULL
+ */
 char *PathCmdFind(t__info *info, char *pathstring, char *command)
 {
 	int i = 0, curr_pos = 0;

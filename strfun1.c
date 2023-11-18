@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * CpString - copies a string
+ * @destina: the destination
+ * @sourc: the source
+ *
+ * Return: pointer to destination
+ */
 char *CpString(char *destina, char *sourc)
 {
 	int i = 0;
@@ -14,7 +20,12 @@ char *CpString(char *destina, char *sourc)
 	destina[i] = 0;
 	return (destina);
 }
-
+/**
+ * DuplString - duplicates a string
+ * @str: the string to duplicate
+ *
+ * Return: pointer to the duplicated string
+ */
 char *DuplString(const char *str)
 {
 	int length = 0;
@@ -31,7 +42,12 @@ char *DuplString(const char *str)
 		ret[length] = *--str;
 	return (ret);
 }
-
+/**
+ *InpStrPrint - prints an input string
+ *@str: the string to be printed
+ *
+ * Return: Nothing
+ */
 void InpStrPrint(char *str)
 {
 	int i = 0;
@@ -44,7 +60,13 @@ void InpStrPrint(char *str)
 		i++;
 	}
 }
-
+/**
+ * WrCharPutC - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
 int WrCharPutC(char c)
 {
 	static int i;

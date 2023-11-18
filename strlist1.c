@@ -1,4 +1,10 @@
 #include "shell.h"
+/**
+ * LengthLists - determines length of linked list
+ * @pnfn: pointer to first node
+ *
+ * Return: size of list
+ */
 size_t LengthLists(const t__liste *pnfn)
 {
 	size_t i = 0;
@@ -10,6 +16,12 @@ size_t LengthLists(const t__liste *pnfn)
 	}
 	return (i);
 }
+/**
+ * AListeToStr - returns an array of strings of the list->str
+ * @pnfna: pointer to first node
+ *
+ * Return: array of strings
+ */
 char **AListeToStr(t__liste *pnfna)
 {
 	t__liste *node = pnfna;
@@ -39,6 +51,12 @@ char **AListeToStr(t__liste *pnfna)
 	strs[i] = NULL;
 	return (strs);
 }
+/**
+ * PrintListsCon - prints all elements of a list_t linked list
+ * @pnfn: pointer to first node
+ *
+ * Return: size of list
+ */
 size_t PrintListsCon(const t__liste *pnfn)
 {
 	size_t i = 0;
@@ -55,6 +73,14 @@ size_t PrintListsCon(const t__liste *pnfn)
 	}
 	return (i);
 }
+/**
+ * NodePrefStart - returns node whose string starts with prefix
+ * @potolh: pointer to list head
+ * @strtm: string to match
+ * @nch: the next character after prefix to match
+ *
+ * Return: match node or null
+ */
 t__liste *NodePrefStart(t__liste *potolh, char *strtm, char nch)
 {
 	char *p = NULL;
@@ -68,7 +94,13 @@ t__liste *NodePrefStart(t__liste *potolh, char *strtm, char nch)
 	}
 	return (NULL);
 }
-
+/**
+ * IndexNodeGet - gets the index of a node
+ * @header: pointer to list head
+ * @ptnode: pointer to the node
+ *
+ * Return: index of node or -1
+ */
 ssize_t IndexNodeGet(t__liste *header, t__liste *ptnode)
 {
 	size_t i = 0;
