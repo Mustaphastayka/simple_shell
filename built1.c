@@ -71,8 +71,8 @@ int ChangeDir(t__info *info)
 	}
 	else
 	{
-		EnvSetNew(info, "OLDPWD", EnvironGet(info, "PWD="));
-		EnvSetNew(info, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", EnvironGet(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }

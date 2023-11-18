@@ -16,13 +16,13 @@ char **StrArrayEnv(t__info *info)
 	return (info->environ);
 }
 /**
- * EnvRemove - Remove an environment variable
+ * _unsetenv - Remove an environment variable
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: 1 on delete, 0 otherwise
  * @strvar: the string env var property
  */
-int EnvRemove(t__info *info, char *strvar)
+int _unsetenv(t__info *info, char *strvar)
 {
 	t__liste *node = info->EnvirList;
 	size_t i = 0;
@@ -47,7 +47,7 @@ int EnvRemove(t__info *info, char *strvar)
 	return (info->ChangedEnvir);
 }
 /**
- * EnvSetNew - Initialize a new environment variable,
+ * _setenv - Initialize a new environment variable,
  *             or modify an existing one
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
@@ -55,7 +55,7 @@ int EnvRemove(t__info *info, char *strvar)
  * @varval: the string env var value
  *  Return: Always 0
  */
-int EnvSetNew(t__info *info, char *strvar, char *varval)
+int _setenv(t__info *info, char *strvar, char *varval)
 {
 	char *buf = NULL;
 	t__liste *node;

@@ -45,7 +45,7 @@ int EnvNewVar(t__info *info)
 		StrPut("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (EnvSetNew(info, info->ArrArg[1], info->ArrArg[2]))
+	if (_setenv(info, info->ArrArg[1], info->ArrArg[2]))
 		return (0);
 	return (1);
 }
@@ -65,7 +65,7 @@ int EnvVarRemove(t__info *info)
 		return (1);
 	}
 	for (i = 1; i <= info->CountArg; i++)
-		EnvRemove(info, info->ArrArg[i]);
+		_unsetenv(info, info->ArrArg[i]);
 
 	return (0);
 }

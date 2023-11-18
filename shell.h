@@ -181,8 +181,8 @@ int EnvVarRemove(t__info *);
 int EnvLinkedList(t__info *);
 
 char **StrArrayEnv(t__info *);
-int EnvRemove(t__info *, char *);
-int EnvSetNew(t__info *, char *, char *);
+int _unsetenv(t__info *, char *);
+int _setenv(t__info *, char *, char *);
 
 char *FileHistory(t__info *info);
 int TipeHistory(t__info *info);
