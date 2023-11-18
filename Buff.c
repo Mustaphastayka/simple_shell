@@ -122,7 +122,7 @@ int VarsReplac(t__info *info)
 								DuplString(NumberConver(getpid(), 10, 0)));
 			continue;
 		}
-		node = NodePrefStart(info->EnvirList, &info->ArrArg[i][1], '=');
+		node = NodePrefStart(info->env, &info->ArrArg[i][1], '=');
 		if (node)
 		{
 			StrReplace(&(info->ArrArg[i]),

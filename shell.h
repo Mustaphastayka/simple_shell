@@ -57,7 +57,7 @@ typedef struct stringlit
  *@number_error: the error code for exit()s
  *@countlifeflags: if on count this line of input
  *@NameFile: the program filename
- *@EnvirList: linked list local copy of environ
+ *@env: linked list local copy of environ
  *@environ: custom modified copy of environ from LL env
  *@Histor: the history node
  *@Alias: the alias node
@@ -79,7 +79,7 @@ typedef struct InfoPass
 	int number_error;
 	int countlifeflags;
 	char *NameFile;
-	t__liste *EnvirList;
+	t__liste *env;
 	t__liste *Histor;
 	t__liste *Alias;
 	char **environ;

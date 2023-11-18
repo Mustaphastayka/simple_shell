@@ -7,7 +7,7 @@
  */
 int CorrentEnv(t__info *info)
 {
-	StringListPrintOnly(info->EnvirList);
+	StringListPrintOnly(info->env);
 	return (0);
 }
 /**
@@ -19,7 +19,7 @@ int CorrentEnv(t__info *info)
  */
 char *EnvironGet(t__info *info, const char *varname)
 {
-	t__liste *node = info->EnvirList;
+	t__liste *node = info->env;
 	char *p;
 
 	while (node)
@@ -82,6 +82,6 @@ int EnvLinkedList(t__info *info)
 
 	for (i = 0; environ[i]; i++)
 		EndAddNote(&node, environ[i], 0);
-	info->EnvirList = node;
+	info->env = node;
 	return (0);
 }

@@ -9,7 +9,7 @@ char **StrArrayEnv(t__info *info)
 {
 	if (!info->environ || info->ChangedEnvir)
 	{
-		info->environ = AListeToStr(info->EnvirList);
+		info->environ = AListeToStr(info->env);
 		info->ChangedEnvir = 0;
 	}
 
@@ -24,7 +24,7 @@ char **StrArrayEnv(t__info *info)
  */
 int _unsetenv(t__info *info, char *strvar)
 {
-	t__liste *node = info->EnvirList;
+	t__liste *node = info->env;
 	size_t i = 0;
 	char *p;
 
@@ -36,9 +36,9 @@ int _unsetenv(t__info *info, char *strvar)
 		p = StartWHay(node->str, strvar);
 		if (p && *p == '=')
 		{
-			info->ChangedEnvir = NodeIndexDeleted(&(info->EnvirList), i);
+			info->ChangedEnvir = NodeIndexDeleted(&(info->env), i);
 			i = 0;
-			node = info->EnvirList;
+			node = info->env;
 			continue;
 		}
 		node = node->next_node;
@@ -70,7 +70,7 @@ int _setenv(t__info *info, char *strvar, char *varval)
 	CpString(buf, strvar);
 	StringConc(buf, "=");
 	StringConc(buf, varval);
-	node = info->EnvirList;
+	node = info->env;
 	while (node)
 	{
 		p = StartWHay(node->str, strvar);
@@ -83,7 +83,7 @@ int _setenv(t__info *info, char *strvar, char *varval)
 		}
 		node = node->next_node;
 	}
-	EndAddNote(&(info->EnvirList), buf, 0);
+	EndAddNote(&(info->env), buf, 0);
 	free(buf);
 	info->ChangedEnvir = 1;
 	return (0);

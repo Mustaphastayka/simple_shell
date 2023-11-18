@@ -54,7 +54,7 @@ int StrBuilFound(t__info *info)
 	int i, Bui_in_re = -1;
 	builtin_table Buiintable[] = {
 			{"exit", ShellExit},
-			{"EnvirList", CorrentEnv},
+			{"env", CorrentEnv},
 			{"help", ChangeHelp},
 			{"Histor", LsHistori},
 			{"setenv", EnvNewVar},
