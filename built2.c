@@ -28,8 +28,8 @@ int unset_alias(t__info *info, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ter = NodeIndexDeleted(&(info->Alias),
-												IndexNodeGet(info->Alias, NodePrefStart(info->Alias, str, -1)));
+	ter = NodeIndexDeleted(&(info->alias),
+												IndexNodeGet(info->alias, NodePrefStart(info->alias, str, -1)));
 	*p = c;
 	return (ter);
 }
@@ -51,7 +51,7 @@ int set_alias(t__info *info, char *str)
 		return (unset_alias(info, str));
 
 	unset_alias(info, str);
-	return (EndAddNote(&(info->Alias), str, 0) == NULL);
+	return (EndAddNote(&(info->alias), str, 0) == NULL);
 }
 /**
  * print_alias - prints an alias string
@@ -89,7 +89,7 @@ int AliasMan(t__info *info)
 
 	if (info->CountArg == 1)
 	{
-		node = info->Alias;
+		node = info->alias;
 		while (node)
 		{
 			print_alias(node);
@@ -103,7 +103,7 @@ int AliasMan(t__info *info)
 		if (p)
 			set_alias(info, info->ArrArg[i]);
 		else
-			print_alias(NodePrefStart(info->Alias, info->ArrArg[i], '='));
+			print_alias(NodePrefStart(info->alias, info->ArrArg[i], '='));
 	}
 
 	return (0);

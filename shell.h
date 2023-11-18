@@ -60,7 +60,7 @@ typedef struct stringlit
  *@env: linked list local copy of environ
  *@environ: custom modified copy of environ from LL env
  *@Histor: the history node
- *@Alias: the alias node
+ *@alias: the alias node
  *@ChangedEnvir: on if environ was changed
  *@statuus_: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
@@ -81,7 +81,7 @@ typedef struct InfoPass
 	char *NameFile;
 	t__liste *env;
 	t__liste *Histor;
-	t__liste *Alias;
+	t__liste *alias;
 	char **environ;
 	int ChangedEnvir;
 	int statuus_;

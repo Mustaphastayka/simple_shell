@@ -80,7 +80,7 @@ int AliasReplac(t__info *info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = NodePrefStart(info->Alias, info->ArrArg[0], '=');
+		node = NodePrefStart(info->alias, info->ArrArg[0], '=');
 		if (!node)
 			return (0);
 		free(info->ArrArg[0]);

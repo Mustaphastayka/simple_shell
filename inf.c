@@ -59,8 +59,8 @@ void InfoStructFree(t__info *info, int allfi)
 			FreesLists(&(info->env));
 		if (info->Histor)
 			FreesLists(&(info->Histor));
-		if (info->Alias)
-			FreesLists(&(info->Alias));
+		if (info->alias)
+			FreesLists(&(info->alias));
 		StrFFree(info->environ);
 		info->environ = NULL;
 		PoinFree((void **)info->cmd_buf);
